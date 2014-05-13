@@ -1,0 +1,32 @@
+#Emitting Events
+
+Read the existing code below and at the bottom trigger both a 'join' event and a 'message' event, sending in strings to each one.
+
+
+var events = require('events');
+var EventEmitter = events.EventEmitter;
+var http = require('http');
+var chat = new EventEmitter();
+var users = [], chatlog = [];
+
+
+http.createServer(function(request, response) {
+  	response.writeHead(200);
+  
+  
+  
+ 	chat.on('message', function(message) {
+  	chatlog.push(message);
+	});
+
+	chat.on('join', function(nickname) {
+  	users.push(nickname);
+	});
+  
+  	chat.emit('join','Gregg');
+  	chat.emit('message','hello');
+
+  
+  response.end();
+}).listen(8080);
+

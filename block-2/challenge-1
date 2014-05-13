@@ -1,0 +1,16 @@
+#Chat Emitter
+
+We're going to create a custom chat EventEmitter. Create a new EventEmitter called 'chat', listen for 'message' events, and then log the events to the console.
+
+var EventEmitter = require('events').EventEmitter;
+var http = require('http');
+var chat = new EventEmitter();
+
+http.createServer(function(request, response) {
+  	response.writeHead(200);
+ 	chat.on('message', function(message){
+	console.log(message);
+	});
+  response.end();
+}).listen(8080);
+
