@@ -1,0 +1,7 @@
+Running your Code
+
+While you could go to the website and easily install node, we happen to have a console below where you can practice running node applications.
+Go ahead and run that file we just created to read a file off the filesystem with node app.js
+
+Execute node app.js
+

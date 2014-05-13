@@ -1,0 +1,19 @@
+#Read File in Server
+
+Now that you know how to create an HTTP server and how to read a file off the filesystem in a non-blocking way, let's try to combine the two.
+Instead of just writing a string to the HTTP response, use fs.readFile to write the contents of index.html to the response instead.
+Note: since fs.readFile is non-blocking, make sure you end the response inside readFile's callback.
+
+
+ar http = require('http');
+var fs = require('fs');
+
+http.createServer(function(request, response) {
+  response.writeHead(200);
+  
+  var contents = fs.readFile('index.html',function(err,contents){
+ 	  response.write(contents);
+      response.end();
+});
+
+}).listen(8080);
